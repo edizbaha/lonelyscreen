@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LonelyScreen License Generator<title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #d1d3d3;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #32a4e7;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #key {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LonelyScreen License Generator</h1>
+        <form>
+            <label for="email">E-mail:</label>
+            <input type="text" id="email" name="email">
+            <button type="button" onclick="generateKey()">Generate Key</button>
+        </form>
+        <div id="key"></div>
+    </div>
+
+    <script>
+        function generateKey() {
+            var email = document.getElementById("email").value;
+            var constantString = "3x8)*&$";
+            var hash = md5(constantString + email).toUpperCase();
+            var key = hash.substring(0, 4) + "-" + hash.substring(4, 8);
+            document.getElementById("key").innerText = "Key: " + key;
+        }
+    </script>
+</body>
+</html>
